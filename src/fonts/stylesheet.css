@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Be Vietnam';
+    src: url('BeVietnam-SemiBold.eot');
+    src: url('BeVietnam-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('BeVietnam-SemiBold.woff2') format('woff2'),
+        url('BeVietnam-SemiBold.woff') format('woff'),
+        url('BeVietnam-SemiBold.ttf') format('truetype'),
+        url('BeVietnam-SemiBold.svg#BeVietnam-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Be Vietnam';
+    src: url('BeVietnam-Bold.eot');
+    src: url('BeVietnam-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BeVietnam-Bold.woff2') format('woff2'),
+        url('BeVietnam-Bold.woff') format('woff'),
+        url('BeVietnam-Bold.ttf') format('truetype'),
+        url('BeVietnam-Bold.svg#BeVietnam-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Be Vietnam';
+    src: url('BeVietnam-Regular.eot');
+    src: url('BeVietnam-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BeVietnam-Regular.woff2') format('woff2'),
+        url('BeVietnam-Regular.woff') format('woff'),
+        url('BeVietnam-Regular.ttf') format('truetype'),
+        url('BeVietnam-Regular.svg#BeVietnam-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Be Vietnam';
+    src: url('BeVietnam-Light.eot');
+    src: url('BeVietnam-Light.eot?#iefix') format('embedded-opentype'),
+        url('BeVietnam-Light.woff2') format('woff2'),
+        url('BeVietnam-Light.woff') format('woff'),
+        url('BeVietnam-Light.ttf') format('truetype'),
+        url('BeVietnam-Light.svg#BeVietnam-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Be Vietnam';
+    src: url('BeVietnam-Thin.eot');
+    src: url('BeVietnam-Thin.eot?#iefix') format('embedded-opentype'),
+        url('BeVietnam-Thin.woff2') format('woff2'),
+        url('BeVietnam-Thin.woff') format('woff'),
+        url('BeVietnam-Thin.ttf') format('truetype'),
+        url('BeVietnam-Thin.svg#BeVietnam-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Be Vietnam';
+    src: url('BeVietnam-Medium.eot');
+    src: url('BeVietnam-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BeVietnam-Medium.woff2') format('woff2'),
+        url('BeVietnam-Medium.woff') format('woff'),
+        url('BeVietnam-Medium.ttf') format('truetype'),
+        url('BeVietnam-Medium.svg#BeVietnam-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
