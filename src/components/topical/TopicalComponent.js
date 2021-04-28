@@ -35,6 +35,7 @@ export const TopicalComponent = React.memo(() => {
         setState(prevState => ({ ...prevState, page: ++state.page }))
     }
 
+    
 
     const loadMoreComponent = event => {
         if (state.isLoadMoreBtn)
@@ -62,7 +63,7 @@ export const TopicalComponent = React.memo(() => {
                             </div>
                         </div>
                         {loadMoreComponent(HandleClickLoadMoreBtn)}
-                        
+
                     </section>
                 </div>
             }
