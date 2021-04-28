@@ -62,6 +62,7 @@ export const TopicalComponent = React.memo(() => {
                             </div>
                         </div>
                         {loadMoreComponent(HandleClickLoadMoreBtn)}
+                        
                     </section>
                 </div>
             }
