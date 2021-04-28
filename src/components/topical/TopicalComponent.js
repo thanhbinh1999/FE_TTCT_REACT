@@ -43,8 +43,9 @@ export const TopicalComponent = React.memo(() => {
                     <a class="button btn-more" href="javascript:void(0)" title=""><span class="icon"></span></a>
                 </div>
             );
-            
+
     }
+    
 
     return (
         <>
