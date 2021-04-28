@@ -16,10 +16,17 @@ export const getSlugCate = (cate) => {
     return slug;
 }
 
+export const getSlugTopical = (slug, id) => {
+    return 'chuyende/' + slug + '-' + id + '.html';
+}
+
 export const getCategoryName = cate => {
     return cate[0].description;
 }
 
+export const getSlugTag = tag => {
+    return '/tags/' + tag.slug + '-' + tag.id + '.html';
+}
 
 export const getLinkTopcial = (slug, id) => {
     return '/chuyende/' + slug + '-' + id + '.html';

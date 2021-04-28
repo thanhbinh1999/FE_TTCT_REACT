@@ -1,11 +1,11 @@
 import React from 'react';
 import LayoutDefault from '../../layouts/LayoutDefault';
-import { TagComponent } from '../../components/tag/TagComponent';
-export const TagPage = () => {
+import {TopicalComponent} from '../../components/topical/TopicalComponent';
+export const ToipicalPage = () => {
     return (
         <>
             <LayoutDefault>
-                <TagComponent />
+                <TopicalComponent />
             </LayoutDefault>
         </>
     )

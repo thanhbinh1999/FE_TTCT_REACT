@@ -50,6 +50,7 @@ export const Detail_2_Component = props => {
                                     <section dangerouslySetInnerHTML={{ __html: post.object_content }} />
                                 </article >
                                 <RelatedTagsListComponent tags={post.tags} />
+                                {console.log(post.tags)}
                             </section>
                             <aside class="sidebar">
                                 <div class="block-authors">

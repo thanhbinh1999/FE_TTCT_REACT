@@ -66,7 +66,7 @@ export default class Navigation extends React.Component {
                                             <a href="#" title="">Kinh tế</a>
                                         </div>
                                     </div>
-                                    
+
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/cuoc-song-muon-mau">Cuộc sống muôn màu</Link>
@@ -103,6 +103,9 @@ export default class Navigation extends React.Component {
                                             <a href="#" title="">Lịch sử</a>
                                         </div>
                                     </div>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/chuyende">Chuyên đề </Link>
                                 </li>
                                 <li className="nav-item btn-menu-1">
                                     <a className="nav-link" href="#">...</a>
@@ -141,6 +144,7 @@ export default class Navigation extends React.Component {
                                         </div>
                                     </div>
                                 </li>
+
                             </ul>
                             <div className="subscribe">
                                 <a href="#" title="">subscribe</a>

@@ -12,7 +12,7 @@ export const TagComponent = React.memo((props) => {
     const [status, setStatus] = useState(null);
     const [per_page, setPerPage] = useState(10);
     const [isLoadMoreBtn, setLoadMoreBtn] = useState(false);
-
+    
     useEffect(() => {
         fetch();
     }, [page, id]);
@@ -33,10 +33,9 @@ export const TagComponent = React.memo((props) => {
     const HandleLoadMore = () => {
         setPage((prevPage) => ++prevPage);
     }
-
-
     return (
         <>
+        { console.log('tags')}
             {
                 status == 200 && data.length != 0 &&
                 <div class="container">

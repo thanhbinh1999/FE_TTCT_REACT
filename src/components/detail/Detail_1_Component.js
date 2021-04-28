@@ -5,7 +5,6 @@ import { RelatedTagsListComponent } from './related/RelatedTagsListComponent';
 import { RelatedPostsListComponent } from './related/RelatedPostsListComponent';
 export const Detail_1_Component = props => {
     const post = props.objDetail;
-
     useEffect(() => {
         document.getElementsByTagName('body')[0].classList.add('detail-1');
         window.scrollTo(0, 0);
@@ -25,7 +24,7 @@ export const Detail_1_Component = props => {
                                 <a class="title-cat text-center" href="#" title="">{post.sub_title}</a>
                                 <h1 class="fck-title">{post.title}</h1>
                                 <div class="parent_cate">
-                                    <Link  to={getSlugCate(post.cat)} title={getCategoryName(post.cat)}>  {getCategoryName(post.cat)}</Link>
+                                    <Link to={getSlugCate(post.cat)} title={getCategoryName(post.cat)}>  {getCategoryName(post.cat)}</Link>
                                 </div>
                                 <div class="tool-author">
                                     <strong>{post.object_author_name}</strong> <span>{convertTime(post.time_published)}</span>
@@ -43,7 +42,6 @@ export const Detail_1_Component = props => {
                                 </ul>
                                 <span class="btn-action"><i class="fas fa-plus"></i></span>
                             </div>
-
                             <section class="content border-right content-detail">
                                 <article class="fck" >
                                     <section class="article-summary">

@@ -12,6 +12,7 @@ import { CategoryPage } from '../pages/category/CategoryPage';
 import { Detail } from '../pages/detail/Detail';
 import { ThemePage } from '../pages/theme/ThemePage';
 import { TagPage } from '../pages/tag/TagPage';
+import { ToipicalPage } from '../pages/topical/TopicalPage';
 /** */
 
 export default class Web extends React.Component {
@@ -23,21 +24,23 @@ export default class Web extends React.Component {
                 '/van-de-su-kien',
                 '/van-hoa-giai-tri',
             ],
+            topical: [
+                '/chuyende'
+            ],
             detail: [
                 'cuoc-song-muon-mau',
                 'van-de-su-kien',
-                'van-hoa-giai-tri'
-            ],
+                'van-hoa-giai-tri',
 
+            ],
             theme: [
                 '/themes'
             ],
             tag: [
                 '/tags'
-            ]
+            ],
 
         }
-
         return (
             <>
                 <Router>
@@ -49,9 +52,10 @@ export default class Web extends React.Component {
                                 const pathName = match.location.pathname;
                                 if (listPagesName.categories.includes(pathName))
                                     return <CategoryPage />
+                                else if (listPagesName.topical.includes(pathName))
+                                    return <ToipicalPage />
                                 else
                                     return <Redirect to="/" />
-
                             }}
                         />
 
@@ -75,4 +79,3 @@ export default class Web extends React.Component {
         );
     }
 }
-//https://api-ct.tuoitre.vn/fe/articles/list-by-tag?page=1&per_page=10&except=[]&tag_id=1

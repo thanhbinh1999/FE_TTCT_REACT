@@ -16,7 +16,6 @@ export default class Index extends React.Component {
                     <Section4 />
                     <Section5 />
                 </LayoutDefault>
-
             </>
         );
     }
