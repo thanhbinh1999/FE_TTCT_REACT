@@ -1,3 +1,5 @@
 {
-    "root" :  "public/index.html"
+    "routes": {
+        "/**": "index.html"
+    }
 }
