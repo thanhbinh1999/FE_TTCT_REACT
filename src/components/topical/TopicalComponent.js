@@ -46,6 +46,7 @@ export const TopicalComponent = React.memo(() => {
 
     }
 
+    
     return (
         <>
             {
