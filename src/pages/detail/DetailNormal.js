@@ -5,7 +5,7 @@ import LayoutDefautl from '../../layouts/LayoutDefault';
 import { Detail_1_Component } from '../../components/detail/Detail_1_Component';
 import { Detail_2_Component } from '../../components/detail/Detail_2_Component';
 import { NotFoundErrorComponent } from '../../components/errors/NotFoundErrorComponent';
-export const Detail = () => {
+export const DetailNormal = () => {
     const { slug } = useParams();
     const id = slug.split('-').pop().replace('.html', '');
     const [detailData, setData] = useState([]);

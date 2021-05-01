@@ -9,7 +9,8 @@ import {
 /** get  load  pages */
 import Index from '../pages/Index';
 import { CategoryPage } from '../pages/category/CategoryPage';
-import { Detail } from '../pages/detail/Detail';
+import { DetailNormal } from '../pages/detail/DetailNormal';
+import { DetailTopical } from '../pages/detail/DetailTopical';
 import { ThemePage } from '../pages/theme/ThemePage';
 import { TagPage } from '../pages/tag/TagPage';
 import { ToipicalPage } from '../pages/topical/TopicalPage';
@@ -25,7 +26,7 @@ export default class Web extends React.Component {
                 '/van-hoa-giai-tri',
             ],
             topical: [
-                '/chuyende'
+                '/chuyende',
             ],
             detail: [
                 'cuoc-song-muon-mau',
@@ -64,11 +65,13 @@ export default class Web extends React.Component {
                             children={(match) => {
                                 const { category, slug } = match.match.params;
                                 if (listPagesName.categories.includes('/' + category))
-                                    return <Detail />
+                                    return <DetailNormal />
                                 else if (listPagesName.theme.includes('/' + category))
                                     return <ThemePage />
                                 else if (listPagesName.tag.includes('/' + category))
                                     return <TagPage />
+                                else if (listPagesName.topical.includes('/' + category))
+                                    return <DetailTopical />
                                 else
                                     return <Redirect to="/" />
                             }}

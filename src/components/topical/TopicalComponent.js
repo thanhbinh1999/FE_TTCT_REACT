@@ -15,6 +15,7 @@ export const TopicalComponent = React.memo(() => {
         fetch();
     }, [state.page])
 
+
     const fetch = async () => {
         const { meta, data, status, error } = await TopicalProviderApi.getListTopical(state.page, state.per_page);
         if (status == 200) {
@@ -41,7 +42,6 @@ export const TopicalComponent = React.memo(() => {
                     <a class="button btn-more" href="javascript:void(0)" title=""><span class="icon"></span></a>
                 </div>
             );
-
     }
     return (
         <>
@@ -63,8 +63,6 @@ export const TopicalComponent = React.memo(() => {
                     </section>
                 </div>
             }
-
-
         </>
     )
 })

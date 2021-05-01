@@ -32,7 +32,7 @@ class TopicalProviderApi {
                     error: []
 
                 }).catch(resError =>
-                
+
                     this.response = {
                         meta: [],
                         data: [],
@@ -41,6 +41,25 @@ class TopicalProviderApi {
                     }
                 )
     }
+
+    getContent = async (id) => {
+        return await AxiosTTCT.get(`/fe/topical/topical-detail?id=${id}`)
+            .then(res =>
+                this.response = {
+                    status: res.status,
+                    meta: [],
+                    data: res.data,
+                    error: []
+                }).catch(resError =>
+                    this.response = {
+                        meta: [],
+                        data: [],
+                        error: resError.message,
+                        status: (resError.response != undefined) ? resError.response.status : 502
+                    }
+                )
+    }
+
 }
 
 export default new TopicalProviderApi();
