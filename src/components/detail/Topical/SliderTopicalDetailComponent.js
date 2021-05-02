@@ -13,7 +13,6 @@ export const SliderTopicallDetailComponent = props => {
             backgroundSize: 'cover',
         }
     }
-
     return (
         <>
             {

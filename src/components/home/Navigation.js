@@ -55,58 +55,85 @@ export default class Navigation extends React.Component {
                                 <li>
                                     <a className="logo-list" href="#"><img src={logo} alt="" /></a>
                                 </li>
-                                <li className="nav-item active">
-                                    <Link className="nav-link" to="/van-de-su-kien">Vấn đề sự kiện</Link>
-                                    <div className="sub-menu">
-                                        <div className="container">
-                                            <a href="#" title="">Thời sự quốc tế</a>
-                                            <a href="#" title="">Tiêu điểm</a>
-                                            <a href="#" title="">Chuyên đề</a>
-                                            <a href="#" title="">Vấn đề sự kiện</a>
-                                            <a href="#" title="">Kinh tế</a>
-                                        </div>
-                                    </div>
 
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/cuoc-song-muon-mau">Cuộc sống muôn màu</Link>
-                                    <div className="sub-menu">
-                                        <div className="container">
-                                            <a href="#" title="">Công nghệ</a>
-                                            <a href="#" title="">Hồ sơ</a>
-                                            <a href="#" title="">Câu chuyện cuộc sống</a>
-                                            <a href="#" title="">Cửa sổ khoa học</a>
-                                            <a href="#" title="">Môi trường</a>
-                                            <a href="#" title="">Thế giới không phẳng</a>
-                                            <a href="#" title="">Khoa học</a>
-                                            <a href="#" title="">Giáo dục</a>
-                                            <a href="#" title="">Gặp gỡ và đối thoại</a>
-                                            <a href="#" title="">Sức khỏe</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/van-hoa-giai-tri">Văn hóa giải trí</Link>
-                                    <div className="sub-menu">
-                                        <div className="container">
-                                            <a href="#" title="">Truyện ngắn</a>
-                                            <a href="#" title="">Văn hóa</a>
-                                            <a href="#" title="">Điện ảnh</a>
-                                            <a href="#" title="">Tạp bút</a>
-                                            <a href="#" title="">Mỹ thuật</a>
-                                            <a href="#" title="">Thể thao</a>
-                                            <a href="#" title="">Âm nhạc</a>
-                                            <a href="#" title="">Thư giãn cuối tuần</a>
-                                            <a href="#" title="">Con mắt</a>
-                                            <a href="#" title="">Thật - giả</a>
-                                            <a href="#" title="">Đọc sách cùng bạn</a>
-                                            <a href="#" title="">Lịch sử</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/chuyende">Chuyên đề </Link>
-                                </li>
+                                <Route
+                                    path='/van-de-su-kien'
+                                    exact={true}
+                                    children={({ match }) => (
+                                        <li className={match ? 'nav-item active' : 'nav-item'}>
+                                            <Link className="nav-link" to="/van-de-su-kien" title="Vấn đề sự kiện">Vấn đề sự kiện</Link>
+                                            <div className="sub-menu">
+                                                <div className="container">
+                                                    <a href="#" title="">Thời sự quốc tế</a>
+                                                    <a href="#" title="">Tiêu điểm</a>
+                                                    <a href="#" title="">Chuyên đề</a>
+                                                    <a href="#" title="">Vấn đề sự kiện</a>
+                                                    <a href="#" title="">Kinh tế</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    )}
+                                />
+                                <Route
+                                    path='/cuoc-song-muon-mau'
+                                    exact={true}
+                                    children={({ match }) => (
+                                        <li className={match ? 'nav-item active' : 'nav-item'}>
+                                            <Link className="nav-link" to="/cuoc-song-muon-mau" title="Cuộc sống muôn màu">Cuộc sống muôn màu</Link>
+                                            <div className="sub-menu">
+                                                <div className="container">
+                                                    <a href="#" title="">Công nghệ</a>
+                                                    <a href="#" title="">Hồ sơ</a>
+                                                    <a href="#" title="">Câu chuyện cuộc sống</a>
+                                                    <a href="#" title="">Cửa sổ khoa học</a>
+                                                    <a href="#" title="">Môi trường</a>
+                                                    <a href="#" title="">Thế giới không phẳng</a>
+                                                    <a href="#" title="">Khoa học</a>
+                                                    <a href="#" title="">Giáo dục</a>
+                                                    <a href="#" title="">Gặp gỡ và đối thoại</a>
+                                                    <a href="#" title="">Sức khỏe</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    )}
+                                />
+
+                                <Route
+                                    path='/van-hoa-giai-tri'
+                                    exact={true}
+                                    children={({ match }) => (
+                                        <li className={match ? 'nav-item active' : 'nav-item'}>
+                                            <Link className="nav-link" to="/van-hoa-giai-tri" title="Văn hóa giải trí">Văn hóa giải trí</Link>
+                                            <div className="sub-menu">
+                                                <div className="container">
+                                                    <a href="#" title="">Truyện ngắn</a>
+                                                    <a href="#" title="">Văn hóa</a>
+                                                    <a href="#" title="">Điện ảnh</a>
+                                                    <a href="#" title="">Tạp bút</a>
+                                                    <a href="#" title="">Mỹ thuật</a>
+                                                    <a href="#" title="">Thể thao</a>
+                                                    <a href="#" title="">Âm nhạc</a>
+                                                    <a href="#" title="">Thư giãn cuối tuần</a>
+                                                    <a href="#" title="">Con mắt</a>
+                                                    <a href="#" title="">Thật - giả</a>
+                                                    <a href="#" title="">Đọc sách cùng bạn</a>
+                                                    <a href="#" title="">Lịch sử</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    )}
+                                />
+                                <Route
+                                    path="/chuyende"
+                                    exec={true}
+                                    children={({ match }) => (
+                                        <li className={match ? 'nav-item active' : 'nav-item'}>
+                                            <Link className="nav-link" to="/chuyende" title="Chuyên đề ">Chuyên đề </Link>
+                                        </li>
+                                    )}
+
+                                />
+
                                 <li className="nav-item btn-menu-1">
                                     <a className="nav-link" href="#">...</a>
                                     <div className="sub-menu">

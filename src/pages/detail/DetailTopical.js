@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import queryString from 'query-string';
+import { useParams, useRouteMatch } from 'react-router-dom';
 import TopicalProviderApi from '../../api/providers/TopicalProviderApi';
 import LayoutDefault from '../../layouts/LayoutDefault';
 import SliderTopicalLayout from '../../layouts/SliderTopicalLayout';
@@ -12,15 +13,21 @@ import { SliderTopicallDetailComponent } from '../../components/detail/Topical/S
 
 export const DetailTopical = props => {
     const { slug } = useParams();
-    const id = slug.split('-').pop().replace('.html', '');
+    const hasParams = queryString.parse(window.location.hash);
+    let id = slug.split('-').pop().replace('.html', '');
     const [detailTopical, setDetailTopical] = useState([]);
     const [articleProps, setDataProps] = useState([]);
     let component = null;
 
     useEffect(async () => {
+
+        if (hasParams != null & hasParams.topical != undefined) {
+            id = hasParams.topical
+        }
         const { data, status } = await TopicalProviderApi.getContent(id);
         if (data != undefined && ! null) setDetailTopical(data);
     }, [id]);
+
     const HandleOnSlideLeave = (section, origin, destination, direction, articles) => {
 
         const history = createHistory();
@@ -33,7 +40,7 @@ export const DetailTopical = props => {
         } else {
             history.replace({ pathname: detailTopical.slug + '-' + detailTopical.id + '.html' })
         }
-
+     
     }
     if (detailTopical != undefined && ! null) {
         switch (detailTopical.display_type) {
@@ -41,7 +48,7 @@ export const DetailTopical = props => {
                 component = <SliderTopicalLayout HandleOnSlideLeave={HandleOnSlideLeave}><SliderTopicallDetailComponent data={detailTopical} HandleOnSlideLeave={HandleOnSlideLeave} /></SliderTopicalLayout>
                 break;
             case NEXT_LAYOUT_TYPE:
-                component = <LayoutDefault><NextTopicallDetailComponent /></LayoutDefault>
+                component = <LayoutDefault><NextTopicallDetailComponent data={detailTopical} /></LayoutDefault>
                 break;
             default:
                 component = <LayoutDefault><NotFoundErrorComponent /></LayoutDefault>

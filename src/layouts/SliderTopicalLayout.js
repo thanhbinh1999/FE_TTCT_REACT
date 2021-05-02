@@ -17,9 +17,9 @@ export default class SliderTopicalLayout extends React.Component {
                     onSlideLeave={this.props.HandleOnSlideLeave}
                     licenseKey={'YOUR_KEY_HERE'}
                     scrollingSpeed={950}
-                    render={({ state, fullpageApi }) => {
+                    render={({ state, fullpage_api }) => {
                         return (
-                            <ReactFullpage.Wrapper >
+                            <ReactFullpage.Wrapper  >
                                 {this.props.children}
                             </ReactFullpage.Wrapper>
                         );
