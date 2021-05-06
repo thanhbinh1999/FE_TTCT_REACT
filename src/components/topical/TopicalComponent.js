@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import LazyLoad, { lazyload } from 'react-lazyload';
 import TopicalProviderApi from '../../api/providers/TopicalProviderApi';
 import { ListTopicalComponent } from './list/ListTopicalComponent';
-
+import SkeletonTheme from 'react-loading-skeleton';
 export const TopicalComponent = React.memo(() => {
     const [state, setState] = useState({
         list: [],
@@ -36,6 +36,7 @@ export const TopicalComponent = React.memo(() => {
         setState(prevState => ({ ...prevState, page: ++state.page }))
     }
     const loadMoreComponent = event => {
+
         if (state.isLoadMoreBtn)
             return (
                 <div class="outer-more text-center" onClick={event}>
@@ -59,9 +60,9 @@ export const TopicalComponent = React.memo(() => {
                             </div>
                         </div>
                         {loadMoreComponent(HandleClickLoadMoreBtn)}
-
                     </section>
                 </div>
+
             }
         </>
     )

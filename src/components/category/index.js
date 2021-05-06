@@ -3,10 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import loading from '../../img/loading-1.jpg';
 import ContentLoader, { Facebook } from "react-content-loader";
 
+
 /** component category  page */
 import { RenderBigBlockComponent } from './RenderBigBlockComponent';
 import { RenderSmallBlockComponent } from './RenderSmallBlockComponent';
 /* end componnet* */
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 
 /***  api   Providers */
@@ -60,9 +62,7 @@ export const CategoryIndexComponent = () => {
                         <section class="content borderRight">
                             <RenderBigBlockComponent data={data[0]} />
                             <div class="list-art">
-
-                                < RenderSmallBlockComponent data={data} />
-
+                                <RenderSmallBlockComponent data={data} />
                                 {
                                     isLoadMoreBtn &&
                                     <div class="outer-more text-center" onClick={HandleLoadMore} >

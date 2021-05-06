@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategoryName, convertTime, getSlugCate } from '../../helpers/Helper';
+import { isArticleOfTopical, renderNextLink, renderPrevLink, styleTopicBar } from '../../helpers/TopicalHelper';
+import { getCategoryName, convertTime, getSlugCate, getSlugTopical } from '../../helpers/Helper';
 import { RelatedTagsListComponent } from './related/RelatedTagsListComponent';
 import { RelatedPostsListComponent } from './related/RelatedPostsListComponent';
 export const Detail_2_Component = props => {
@@ -32,7 +33,6 @@ export const Detail_2_Component = props => {
                             </div>
                         </div>
                         <div class="row row-style">
-
                             <div class="block-right">
                                 <ul class="tool ui sticky-top">
                                     <li><span><i class="fas fa-home"></i></span></li>
@@ -48,9 +48,25 @@ export const Detail_2_Component = props => {
                                         <p>{post.description}</p>
                                     </section>
                                     <section dangerouslySetInnerHTML={{ __html: post.object_content }} />
+                                    <RelatedTagsListComponent tags={post.tags} />
                                 </article >
-                                <RelatedTagsListComponent tags={post.tags} />
-                                {console.log(post.tags)}
+                                {
+                                    isArticleOfTopical(post) &&
+                                    <div class="topic-bar " style={styleTopicBar}>
+                                        {
+                                            renderPrevLink(post) != null &&
+                                            <Link class="link-back" to={renderPrevLink(post)}><span class="icon"></span><i>Trở lại</i> </Link>
+                                        }
+                                        <Link class="link-topic" to={getSlugTopical(post.cat[1].slug, post.cat[1].id)}>
+                                            <span>Bạn đang đọc trong chuyên đề</span>
+                                            <strong> "{post.cat[1].name}"</strong>
+                                        </Link>
+                                        {
+                                            renderNextLink(post) != null &&
+                                            <Link class="link-next" to={renderNextLink(post)} style={{ marginLeft: '50%' }}>Tiếp theo<span class="icon"></span></Link>
+                                        }
+                                    </div>
+                                }
                             </section>
                             <aside class="sidebar">
                                 <div class="block-authors">

@@ -19,9 +19,12 @@
     "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.2",
     "react-lazyload": "^3.2.0",
+    "react-loading": "^2.0.3",
+    "react-loading-skeleton": "^2.2.0",
     "react-owl-carousel": "^2.3.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-spinners": "^0.10.6",
     "styled-content-loader": "^1.2.2",
     "web-vitals": "^1.0.1"
   },

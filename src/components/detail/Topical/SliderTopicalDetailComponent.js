@@ -72,6 +72,7 @@ export const SliderTopicallDetailComponent = props => {
                                 </div>
                             </div>)
                     }
+                    <div class="topic-bar"><a href="javascript:void(0)" class="link-topic"><span>Bạn đang đọc trong chuyên đề</span> <strong>"{data.name}"</strong></a></div>
                 </div>
             }
 

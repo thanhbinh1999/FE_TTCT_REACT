@@ -40,7 +40,7 @@ export const DetailTopical = props => {
         } else {
             history.replace({ pathname: detailTopical.slug + '-' + detailTopical.id + '.html' })
         }
-     
+
     }
     if (detailTopical != undefined && ! null) {
         switch (detailTopical.display_type) {

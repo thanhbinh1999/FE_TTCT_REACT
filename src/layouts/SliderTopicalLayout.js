@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactFullpage from '@fullpage/react-fullpage';
+
 export default class SliderTopicalLayout extends React.Component {
     constructor(props) {
         super(props);

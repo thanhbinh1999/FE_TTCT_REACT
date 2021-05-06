@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import Lazyload from 'react-lazyload';
 import TagProviderApi from '../../api/providers/TagProviderApi';
-import { CountString, resizeThumb, getSlugCate, toSlug, getCategoryName, convertTime } from '../../helpers/Helper';
+import { ListTagComponent } from '../../components/tag/list/ListTagComponent';
 export const TagComponent = React.memo((props) => {
     const { slug } = useParams();
     const id = slug.split('-').pop().replace('.html', '');
@@ -12,7 +10,7 @@ export const TagComponent = React.memo((props) => {
     const [status, setStatus] = useState(null);
     const [per_page, setPerPage] = useState(10);
     const [isLoadMoreBtn, setLoadMoreBtn] = useState(false);
-    
+
     useEffect(() => {
         fetch();
     }, [page, id]);
@@ -35,7 +33,7 @@ export const TagComponent = React.memo((props) => {
     }
     return (
         <>
-        { console.log('tags')}
+
             {
                 status == 200 && data.length != 0 &&
                 <div class="container">
@@ -46,31 +44,7 @@ export const TagComponent = React.memo((props) => {
                                 <div class="list-art">
                                     {
                                         data.map(post =>
-                                            <article class="art-right-one" key={post.object_id}>
-                                                <div class="outer-thumb">
-                                                    <Lazyload height={169} offset={100}  >
-                                                        <Link class="thumb thumb-16x10" to={toSlug(post.cate, post.title, post.object_id)} >
-                                                            <img src={resizeThumb(800, 350, 0, 350, 0, post.thumb_base_url, post.thumb_link)} data-original="img/page/5.jpg" alt="" />
-                                                        </Link>
-                                                    </Lazyload>
-                                                </div>
-                                                <div class="des">
-                                                    <Link class="category-one" to={getSlugCate(post.cate)}>{getCategoryName(post.cate)}</Link>
-                                                    <h3><Link to={toSlug(post.cate, post.title, post.object_id)} title={post.title}>{post.title}</Link></h3>
-                                                    <ul class="list-one">
-                                                        <li>
-                                                            <a class="author-one" href="#" title="">{post.object_author_name}</a>
-                                                        </li>
-                                                        <li>
-                                                            <span>{convertTime(post.time_published)}</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>{CountString(post.content)}</span>
-                                                        </li>
-                                                    </ul>
-                                                    <p class="muted">{post.description}</p>
-                                                </div>
-                                            </article>
+                                            <ListTagComponent data={post} />
                                         )
                                     }
                                     {

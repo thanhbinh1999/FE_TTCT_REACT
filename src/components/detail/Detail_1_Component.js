@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategoryName, convertTime, getSlugCate } from '../../helpers/Helper';
+import { isArticleOfTopical, styleTopicBar, renderNextLink, renderPrevLink } from '../../helpers/TopicalHelper';
 import { RelatedTagsListComponent } from './related/RelatedTagsListComponent';
 import { RelatedPostsListComponent } from './related/RelatedPostsListComponent';
 export const Detail_1_Component = props => {
@@ -12,6 +13,10 @@ export const Detail_1_Component = props => {
             document.getElementsByTagName('body')[0].classList.remove('detail-1');
         }
     }, [post]);
+
+    const isTopicalArticle = () => {
+        return (props.display != undefined && props.display == 2) ? true : false;
+    }
 
     return (
         <>
@@ -48,8 +53,26 @@ export const Detail_1_Component = props => {
                                         <p>{post.description}</p>
                                     </section>
                                     <section dangerouslySetInnerHTML={{ __html: post.object_content }} />
+
+                                    <div class="topic-bar active" style={styleTopicBar}>
+                                        <a class="link-back" href={renderPrevLink(post)}><span class="icon"></span> <i>Trở lại</i> </a>
+                                        <a class="link-topic" href="#">
+                                            <span>Bạn đang đọc trong chuyên đề</span>
+                                            <strong>" Chính sách nhập cư"</strong>
+                                        </a>
+                                        <ul class="tool">
+                                            <li><span><i class="far fa-thumbs-up"></i></span></li>
+                                            <li><span><i class="fas fa-print"></i></span></li>
+                                            <li><span><i class="fa
+                                                s fa-link"></i></span></li>
+                                            <li class="active"><span><i class="far fa-bookmark"></i></span></li>
+                                        </ul>
+                                        <a class="link-next" to={renderNextLink(post)}><i>Tiếp theo</i> <span class="icon"></span></a>
+                                    </div>
+
+
+                                    <RelatedTagsListComponent tags={post.tags} />
                                 </article >
-                                <RelatedTagsListComponent tags={post.tags} />
                             </section>
                             <aside class="sidebar">
                                 <div class="block-authors">

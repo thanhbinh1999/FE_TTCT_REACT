@@ -8,9 +8,7 @@ export const getSlugTheme = (theme) => {
     }
     return slug;
 }
-export const getSlugThemeTopical = themes => {
 
-}
 export const getSlugCate = (cate) => {
     let slug = null;
     if (cate != null) {
@@ -20,7 +18,7 @@ export const getSlugCate = (cate) => {
 }
 
 export const getSlugTopical = (slug, id) => {
-    return 'chuyende/' + slug + '-' + id + '.html';
+    return '/chuyende/' + slug + '-' + id + '.html';
 }
 
 export const getCategoryName = cate => {
