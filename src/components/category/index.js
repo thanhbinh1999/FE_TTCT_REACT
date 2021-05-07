@@ -1,15 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import loading from '../../img/loading-1.jpg';
-import ContentLoader, { Facebook } from "react-content-loader";
-
-
 /** component category  page */
+import Header from '../../components/home/Header';
+import { equalCategorieName } from '../../helpers/Helper';
 import { RenderBigBlockComponent } from './RenderBigBlockComponent';
 import { RenderSmallBlockComponent } from './RenderSmallBlockComponent';
-/* end componnet* */
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
+import { URL, DESCRIPTION, TITLE } from '../../constants/HeaderConstant';
 
 /***  api   Providers */
 import CategoryProviderApi from '../../api/providers/CategoryProviderAPi';
@@ -21,7 +19,6 @@ export const CategoryIndexComponent = () => {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [isLoadMoreBtn, setLoadMore] = useState(false);
-
     let categoryId = [];
     /// let 
 
@@ -34,16 +31,16 @@ export const CategoryIndexComponent = () => {
             const prevData = data.concat(datas);
             setData(prevData);
         }
+
         if (metas != null) {
             setLoadMore(page < metas.total_pages || true || false)
         } else { setLoadMore(false) }
 
     }
-
-
     useEffect(() => {
         setPage(1);
         fetchData();
+        console.log(data);
     }, [slug]);
 
     useEffect(() => {
@@ -85,6 +82,22 @@ export const CategoryIndexComponent = () => {
                     </div>
                 </section>
             </div>
+            
+            < Header >
+                <title>{equalCategorieName(slug) || TITLE}</title>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="author" content="Tuổi Trẻ Cuối Tuần" />
+                <link rel="sho rtcut icon" href="" type="image/x-icon" />
+                <meta data-n-head="ssr" data-hid="description" name="description" content={DESCRIPTION}></meta>
+                <meta data-n-head="ssr" data-hid="og:title" property="og:title" content={equalCategorieName(slug) || TITLE}></meta>
+                <meta data-n-head="ssr" data-hid="og:url" pro perty="og:url" content={URL} />
+                <meta data-n-head="ssr" data-hid="og:description" property="og:description" content={DESCRIPTION}></meta>
+                <meta data-n-head="ssr" data-hid="og:image" property="og:image" content="https://cuoituan.tuoitre.vn/img/page/logo.png"></meta>
+                <meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content={TITLE}></meta>
+                <meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content={DESCRIPTION} ></meta>
+                <meta data-n-head="ssr" data-hid="twitter:image" name="twitter:image" content="https://cuoituan.tuoitre.vn/img/page/logo.png"></meta>
+            </Header>
         </>
     )
 }

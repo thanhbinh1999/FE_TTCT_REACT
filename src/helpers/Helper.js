@@ -132,3 +132,20 @@ export const toSlug = (cate, str, id) => {
         return getSlugCate(cate) + '/' + str + '-' + id + '.html';
     }
 }
+
+export const equalCategorieName = slug => {
+    switch (slug) {
+        case 'van-hoa-giai-tri':
+            return "Văn hóa giải trí";
+            break;
+        case 'cuoc-song-muon-mau':
+            return "Cuôc sống muôn màu";
+            break;
+        case 'van-de-su-kien':
+            return "Vấn đề sự kiện";
+            break;
+        default:
+            return 'TTCT';
+    }
+
+}
