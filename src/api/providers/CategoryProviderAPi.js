@@ -9,6 +9,7 @@ class CategoryProviderApi {
             status: 200,
         }
     }
+
     /**
      * @method:get
      * @descritions : get all list category 
@@ -16,6 +17,7 @@ class CategoryProviderApi {
      * @return:  status:interger
      * @return:  errors:array
      */
+
     getListCategorys = async () => {
 
         await AxiosTTCT.get(`/fe/categories/list-cat?page=1&per_page=10`).then(res => {
@@ -27,13 +29,15 @@ class CategoryProviderApi {
                     total_pages: res.data.total_pages,
                     current_page: res.data.current_page
                 },
-                errors: []
+                errors: [],
             }
+
+            console.log(res);
         }).catch(resError => {
             this.responseData = {
                 status: resError.response.status,
                 datas: [],
-                errors: resError
+                errors: resError,
             }
         });
 

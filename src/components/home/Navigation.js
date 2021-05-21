@@ -1,26 +1,30 @@
 import React from 'react';
-import $ from "jquery";
 import logo from "../../img/page/logo.png";
 import newspaper from "../../img/page/newspaper/1.jpg";
+import { getToday } from '../../api/pages/home/Index';
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
     Link
 } from "react-router-dom";
 
-export default class Navigation extends React.Component {
+export default class Navigation extends React.PureComponent {
     constructor(props) {
-        super(props);
+        super(props)
+        this.state = {
+            today: null
+        }
     }
 
-    iconSearch = () => {
-        return {
-            __html: '&#61788'
-        };
+    HandleFetchData = async () => {
+        const todayString = await (await getToday()).today;
+        this.setState({
+            today: todayString
+        })
     }
+
     componentDidMount() {
-
+        this.HandleFetchData();
     }
     render() {
         return (
@@ -28,11 +32,11 @@ export default class Navigation extends React.Component {
                 <div className="top-nav d-none d-xl-block">
                     <div className="inner">
                         <div className="container d-flex">
-                            <span className="date">Thứ ba, 20/08/2020</span>
+                            <span className="date">{this.state.today}</span>
                             <ul className="navbar-nav ml-auto">
                                 <li>
                                     <a className="button btn-find" data-toggle="modal" data-target="#searchModal" title="">
-                                        <span className="icon"></span></a>
+                                        <span className="icon"></span></a>
                                 </li>
                             </ul>
                         </div>
@@ -53,7 +57,7 @@ export default class Navigation extends React.Component {
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav">
                                 <li>
-                                    <a className="logo-list" href="#"><img src={logo} alt="" /></a>
+                                    <Link className="logo-list" to="/"><img src={logo} alt="" /></Link>
                                 </li>
 
                                 <Route
@@ -188,18 +192,8 @@ export default class Navigation extends React.Component {
                                         <a className="link-kybao" href="#" title="">Kỳ báo <span className="icon">&#61812</span> </a>
                                     </div>
                                 </div>
-                                <ul className="navbar-nav ml-auto d-xl-none">
-                                    <li className="user">
-                                        <a className="nav-link link" data-toggle="modal" data-target="#loginModal">Hoài Phương</a>
-                                        <a href="#" className="btn-out">Thoát</a>
-                                    </li>
-                                </ul>
-
-                                <div className="find find-1 d-xl-none">
-                                    <a className="button btn-find" data-toggle="modal" data-target="#searchModal" title=""><span
-                                        className="icon">&#61788</span></a>
-                                </div>
                             </div>
+                            <div class="find find-1 d-xl-none"><a data-toggle="modal" data-target="#searchModal" title="" class="button btn-find"><span class="icon"></span></a></div>
                         </div>
                     </div>
                 </nav>

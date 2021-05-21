@@ -37,3 +37,13 @@ export const getAllTheme = async () => {
         }).catch(error => console.log(error));
     return { themes }
 }
+
+export const getToday = async () => {
+    var today = [];
+    await AxiosTTCT.get(`/fe/time/getToday`)
+        .then(res => {
+            if (res.status == 200)
+                today = res.data.data;
+        }).catch(error => console.log(error));
+    return { today };
+}

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 /** helpers  funcs */
-import { resizeThumb, convertTime, toSlug } from '../../helpers/Helper';
+import { resizeThumb, convertTime, toSlug } from '../../../helpers/Helper';
 /** end  helpers funcs */
 import Lazyload from 'react-lazyload';
-export const RenderSmallBlockComponent = React.memo(props => {
+
+export const ListCategoryComponent = React.memo(props => {
     const res = props.data;
     return (
         <>
@@ -12,7 +13,7 @@ export const RenderSmallBlockComponent = React.memo(props => {
                 res.map(function (item, index) {
                     if (index != 0)
                         return (
-                            <article class="art-right-one">
+                            <article class="art-right-one" key={item.object_id} >
                                 <div class="outer-thumb">
                                     <Link class="thumb thumb-16x10" to={toSlug(item.cate, item.title, item.object_id)}>
                                         <Lazyload height={196}>

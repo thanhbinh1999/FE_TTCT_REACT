@@ -35,7 +35,7 @@ const Section5 = () => {
         if (!isShowLoadMore) event.target.remove();
     }
 
-    
+
     return (
         <>
             <section class="section-1">

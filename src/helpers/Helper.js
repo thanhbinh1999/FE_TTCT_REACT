@@ -11,9 +11,8 @@ export const getSlugTheme = (theme) => {
 
 export const getSlugCate = (cate) => {
     let slug = null;
-    if (cate != null) {
+    if (cate != undefined)
         slug = '/' + cate[0].slug;
-    }
     return slug;
 }
 
@@ -144,6 +143,8 @@ export const equalCategorieName = slug => {
         case 'van-de-su-kien':
             return "Vấn đề sự kiện";
             break;
+        case 'chuyende':
+            return 'Chuyên đề ';
         default:
             return 'TTCT';
     }

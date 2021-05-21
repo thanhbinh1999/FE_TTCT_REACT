@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
+import Skeleton from 'react-loading-skeleton';
+
 import { resizeThumb, convertTime, getSlugTopical } from '../../../helpers/Helper';
 
 export const ListTopicalComponent = React.memo(props => {
@@ -30,6 +32,9 @@ export const ListTopicalComponent = React.memo(props => {
                 </article>
 
             </div>
+
+
+
         </>
     )
 })

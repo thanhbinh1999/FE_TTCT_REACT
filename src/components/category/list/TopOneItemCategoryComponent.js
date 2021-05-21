@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 /** helpers  funcs */
-import { resizeThumb, CountString, convertTime, toSlug } from '../../helpers/Helper';
+import { resizeThumb, CountString, convertTime, toSlug } from '../../../helpers/Helper';
 
 /** end  helpers funcs */
 
-export const RenderBigBlockComponent = React.memo(props => {
+export const TopOneItemCategoryComponent = React.memo(props => {
     const data = props.data;
     return (
         <>

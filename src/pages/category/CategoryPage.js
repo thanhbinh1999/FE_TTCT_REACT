@@ -1,10 +1,10 @@
 import React from 'react';
 import LayoutDefautl from '../../layouts/LayoutDefault';
-import { CategoryIndexComponent } from '../../components/category/index';
+import { CategoryComponent } from '../../components/category/CategoryComponent';
 export const CategoryPage = () => {
     return (
         <LayoutDefautl>
-            <CategoryIndexComponent />
+            <CategoryComponent />
         </LayoutDefautl>
     )
 }

@@ -13,7 +13,8 @@ import { DetailNormal } from '../pages/detail/DetailNormal';
 import { DetailTopical } from '../pages/detail/DetailTopical';
 import { ThemePage } from '../pages/theme/ThemePage';
 import { TagPage } from '../pages/tag/TagPage';
-import { ToipicalPage } from '../pages/topical/TopicalPage';
+import { TopicalPage } from '../pages/topical/TopicalPage';
+import Navigation from '../components/home/Navigation';
 /** */
 
 export default class Web extends React.Component {
@@ -54,7 +55,7 @@ export default class Web extends React.Component {
                                 if (listPagesName.categories.includes(pathName))
                                     return <CategoryPage />
                                 else if (listPagesName.topical.includes(pathName))
-                                    return <ToipicalPage />
+                                    return <TopicalPage />
                                 else
                                     return <Redirect to="/" />
                             }}

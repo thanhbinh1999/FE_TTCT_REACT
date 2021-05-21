@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { getSlugTheme, convertTime, resizeThumb } from '../../../helpers/Helper';
 export const SliderTopicallDetailComponent = props => {
     const data = props.data;
     const articles = (data && data.articles != undefined) ? data.articles : [];
-
     props.HandleOnSlideLeave('', '', '', '', articles);
     const backgroundImgCover = (baseUrl, absoluteUrl) => {
         return {
@@ -75,8 +75,7 @@ export const SliderTopicallDetailComponent = props => {
                     <div class="topic-bar"><a href="javascript:void(0)" class="link-topic"><span>Bạn đang đọc trong chuyên đề</span> <strong>"{data.name}"</strong></a></div>
                 </div>
             }
-
-
+           
         </>
     )
 }

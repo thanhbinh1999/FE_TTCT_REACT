@@ -1,9 +1,9 @@
 import React, { useState, useEffect, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import LazyLoad, { lazyload } from 'react-lazyload';
+import ReactLoading from 'react-loading';
 import TopicalProviderApi from '../../api/providers/TopicalProviderApi';
 import { ListTopicalComponent } from './list/ListTopicalComponent';
-import SkeletonTheme from 'react-loading-skeleton';
 export const TopicalComponent = React.memo(() => {
     const [state, setState] = useState({
         list: [],
@@ -44,6 +44,16 @@ export const TopicalComponent = React.memo(() => {
                 </div>
             );
     }
+
+    if (state.list.length == 0) {
+        return <ReactLoading type='spinningBubbles' color={'back'} style={{
+            margin: 'auto',
+            width: '5%',
+            height: '5%',
+        }
+        } />
+    }
+
     return (
         <>
             {

@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import DetailProviderApi from '../../api/providers/DetailProviderApi';
 import LayoutDefautl from '../../layouts/LayoutDefault';
 import Header from '../../components/home/Header';
-import { Detail_1_Component } from '../../components/detail/Detail_1_Component';
-import { Detail_2_Component } from '../../components/detail/Detail_2_Component';
+import { Layout_1_DetailComponent } from '../../components/detail/layouts/Layout_1_DetailComponent';
+import { Layout_2_DetailComponent } from '../../components/detail/layouts/Layout_2_DetailComponent'
 import { NotFoundErrorComponent } from '../../components/errors/NotFoundErrorComponent';
 import { TITLE, DESCRIPTION, URL } from '../../constants/HeaderConstant';
 import { toSlug } from '../../helpers/Helper';
@@ -23,13 +23,15 @@ export const DetailNormal = () => {
     if (detailData != null) {
         switch (detailData.display) {
             case 1:
-                component = <Detail_1_Component objDetail={detailData} />
+                component = <Layout_1_DetailComponent objDetail={detailData} />
                 break;
             case 2:
-                component = <Detail_2_Component objDetail={detailData} />
+                component = <Layout_2_DetailComponent objDetail={detailData} />
                 break;
             default:
-                component = <NotFoundErrorComponent />
+                setTimeout(() => {
+                    component = <NotFoundErrorComponent />
+                }, 1000);
         }
 
     } else {

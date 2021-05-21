@@ -1,23 +1,19 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategoryName, convertTime, getSlugCate } from '../../helpers/Helper';
-import { isArticleOfTopical, styleTopicBar, renderNextLink, renderPrevLink } from '../../helpers/TopicalHelper';
-import { RelatedTagsListComponent } from './related/RelatedTagsListComponent';
-import { RelatedPostsListComponent } from './related/RelatedPostsListComponent';
-export const Detail_1_Component = props => {
+import { isArticleOfTopical, renderNextLink, renderPrevLink, styleTopicBar } from '../../../helpers/TopicalHelper';
+import { getCategoryName, convertTime, getSlugCate, getSlugTopical } from '../../../helpers/Helper';
+import { RelatedTagsListComponent } from '../related/RelatedTagsListComponent';
+import { RelatedPostsListComponent } from '../related/RelatedPostsListComponent';
+export const Layout_2_DetailComponent = props => {
     const post = props.objDetail;
     useEffect(() => {
-        document.getElementsByTagName('body')[0].classList.add('detail-1');
+        document.getElementsByTagName('body')[0].classList.add('detail-2');
         window.scrollTo(0, 0);
         return () => {
-            document.getElementsByTagName('body')[0].classList.remove('detail-1');
+            document.getElementsByTagName('body')[0].classList.remove('detail-2');
         }
+
     }, [post]);
-
-    const isTopicalArticle = () => {
-        return (props.display != undefined && props.display == 2) ? true : false;
-    }
-
     return (
         <>
             {
@@ -37,42 +33,40 @@ export const Detail_1_Component = props => {
                             </div>
                         </div>
                         <div class="row row-style">
-
                             <div class="block-right">
                                 <ul class="tool ui sticky-top">
-                                    <li><span class="far fa-thumbs-up"> <i></i></span> 245</li>
+                                    <li><span><i class="fas fa-home"></i></span></li>
                                     <li><span><i class="icon icon-facebook"></i></span></li>
                                     <li><span><i class="fas fa-print"></i></span></li>
-                                    <li class="active"><span><i class="far fa-bookmark"></i></span></li>
                                 </ul>
                                 <span class="btn-action"><i class="fas fa-plus"></i></span>
                             </div>
+
                             <section class="content border-right content-detail">
                                 <article class="fck" >
                                     <section class="article-summary">
                                         <p>{post.description}</p>
                                     </section>
                                     <section dangerouslySetInnerHTML={{ __html: post.object_content }} />
-
-                                    <div class="topic-bar active" style={styleTopicBar}>
-                                        <a class="link-back" href={renderPrevLink(post)}><span class="icon"></span> <i>Trở lại</i> </a>
-                                        <a class="link-topic" href="#">
-                                            <span>Bạn đang đọc trong chuyên đề</span>
-                                            <strong>" Chính sách nhập cư"</strong>
-                                        </a>
-                                        <ul class="tool">
-                                            <li><span><i class="far fa-thumbs-up"></i></span></li>
-                                            <li><span><i class="fas fa-print"></i></span></li>
-                                            <li><span><i class="fa
-                                                s fa-link"></i></span></li>
-                                            <li class="active"><span><i class="far fa-bookmark"></i></span></li>
-                                        </ul>
-                                        <a class="link-next" to={renderNextLink(post)}><i>Tiếp theo</i> <span class="icon"></span></a>
-                                    </div>
-
-
                                     <RelatedTagsListComponent tags={post.tags} />
                                 </article >
+                                {
+                                    isArticleOfTopical(post) &&
+                                    <div class="topic-bar " style={styleTopicBar}>
+                                        {
+                                            renderPrevLink(post) != null &&
+                                            <Link class="link-back" to={renderPrevLink(post)}><span class="icon"></span><i>Trở lại</i> </Link>
+                                        }
+                                        <Link class="link-topic" to={getSlugTopical(post.cat[1].slug, post.cat[1].id)}>
+                                            <span>Bạn đang đọc trong chuyên đề</span>
+                                            <strong> "{post.cat[1].name}"</strong>
+                                        </Link>
+                                        {
+                                            renderNextLink(post) != null &&
+                                            <Link class="link-next" to={renderNextLink(post)} style={{ marginLeft: '50%' }}>Tiếp theo<span class="icon"></span></Link>
+                                        }
+                                    </div>
+                                }
                             </section>
                             <aside class="sidebar">
                                 <div class="block-authors">

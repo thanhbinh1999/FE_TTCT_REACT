@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import loading from '../../img/loading-1.jpg';
+import ReactLoading from 'react-loading';
 /** component category  page */
-import Header from '../../components/home/Header';
+import Header from '../home/Header';
 import { equalCategorieName } from '../../helpers/Helper';
-import { RenderBigBlockComponent } from './RenderBigBlockComponent';
-import { RenderSmallBlockComponent } from './RenderSmallBlockComponent';
+import { TopOneItemCategoryComponent } from './list/TopOneItemCategoryComponent';
+import { ListCategoryComponent } from './list/ListCategoryComponent';
 
 import { URL, DESCRIPTION, TITLE } from '../../constants/HeaderConstant';
 
@@ -13,18 +14,20 @@ import { URL, DESCRIPTION, TITLE } from '../../constants/HeaderConstant';
 import CategoryProviderApi from '../../api/providers/CategoryProviderAPi';
 /** end class  */
 
-export const CategoryIndexComponent = () => {
+export const CategoryComponent = React.memo(() => {
     // const 
     const { slug } = useParams();
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [isLoadMoreBtn, setLoadMore] = useState(false);
+    const [isLoading, setLoading] = useState(false);
+
     let categoryId = [];
     /// let 
 
     const fetchData = async () => {
         categoryId = await CategoryProviderApi.getCategoryIdBySlug(slug);
-        const { metas, datas } = (await CategoryProviderApi.getArticleByCate(categoryId, page, 10)).get();
+        const { metas, datas, isLoading } = (await CategoryProviderApi.getArticleByCate(categoryId, page, 10)).get();
         if (page == 1) {
             setData(datas);
         } else {
@@ -40,7 +43,6 @@ export const CategoryIndexComponent = () => {
     useEffect(() => {
         setPage(1);
         fetchData();
-        console.log(data);
     }, [slug]);
 
     useEffect(() => {
@@ -51,15 +53,24 @@ export const CategoryIndexComponent = () => {
     const HandleLoadMore = () => {
         setPage((prevPage) => ++prevPage);
     }
+
+    if (data.length == 0) {
+        return <ReactLoading type='spinningBubbles' color={'back'} style={{
+            margin: 'auto',
+            width: '5%',
+            height: '5%',
+        }
+        } />
+    }
     return (
         <>
             <div class="container">
                 <section class="section section-top">
                     <div class="row row-style">
                         <section class="content borderRight">
-                            <RenderBigBlockComponent data={data[0]} />
+                            <TopOneItemCategoryComponent data={data[0]} />
                             <div class="list-art">
-                                <RenderSmallBlockComponent data={data} />
+                                <ListCategoryComponent data={data} />
                                 {
                                     isLoadMoreBtn &&
                                     <div class="outer-more text-center" onClick={HandleLoadMore} >
@@ -82,7 +93,7 @@ export const CategoryIndexComponent = () => {
                     </div>
                 </section>
             </div>
-            
+
             < Header >
                 <title>{equalCategorieName(slug) || TITLE}</title>
                 <meta charset="utf-8" />
@@ -100,4 +111,4 @@ export const CategoryIndexComponent = () => {
             </Header>
         </>
     )
-}
+})
